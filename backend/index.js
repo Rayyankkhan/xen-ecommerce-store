@@ -1,4 +1,4 @@
-const port = 4000;
+const port = process.env.PORT || 4000;
 const express = require("express");
 const app = express();
 
@@ -415,23 +415,13 @@ app.post('/placeorder', fetchUser, [
     res.send({ success: true, order });
 });
 
+module.exports = app;
 
-
-
-    
-
-   
-    
-
-
-
-
-
-         app.listen(port,(error)=> {
-            if(!error) {
-                console.log("Server is running on Port" +port)
-            }
-            else {
-                console.log("Error : " +error)
-            }
-        })
+        //  app.listen(port,(error)=> {
+        //     if(!error) {
+        //         console.log("Server is running on Port" +port)
+        //     }
+        //     else {
+        //         console.log("Error : " +error)
+        //     }
+        // })
