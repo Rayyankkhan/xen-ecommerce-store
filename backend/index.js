@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
 
 // images storage endpoint
 const storage = multer.diskStorage({
-    destination: '/tmp/upload/images',
+    destination: './upload/images',
     filename:(req, file, cb) => {
         return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
     }
