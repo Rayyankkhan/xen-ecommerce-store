@@ -19,7 +19,7 @@ const Login = () => {
   const login = async () => {
     console.log("login button clicked", formData)
     let responseData;
-    await fetch('http://localhost:4000/login', {
+    await fetch('https://xen-ecommerce-store-backend.vercel.app/login', {
       method: 'POST',
       headers: {
         Accept: 'application/formData',
@@ -39,7 +39,7 @@ const Login = () => {
   const signup = async () => {
     console.log("Signup button clicked", formData)
     let responseData;
-    await fetch('http://localhost:4000/signup', {
+    await fetch('https://xen-ecommerce-store-backend.vercel.app/signup', {
       method: 'POST',
       headers: {
         Accept: 'application/formData',

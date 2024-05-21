@@ -70,7 +70,7 @@ const Checkout = () => {
         productId: item.id,
         quantity: item.quantity,
       }));
-      const response = await fetch("http://localhost:4000/placeorder", {
+      const response = await fetch("https://xen-ecommerce-store-backend.vercel.app/placeorder", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

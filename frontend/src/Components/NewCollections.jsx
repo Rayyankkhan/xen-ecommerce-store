@@ -8,7 +8,7 @@ const NewCollections = () => {
     const [LATEST, setLATEST] = useState([]);
 
     useEffect(()=>{
-        fetch("http://localhost:4000/newcollections").then((response)=> response.json()).then((data)=> setLATEST(data))
+        fetch("https://xen-ecommerce-store-backend.vercel.app/newcollections").then((response)=> response.json()).then((data)=> setLATEST(data))
     }, [])
   return (
    <>
