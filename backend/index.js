@@ -3,15 +3,10 @@ const express = require("express");
 const app = express();
 
 const mongoose = require("mongoose");
-const milter = require("multer");
 const jwt = require("jsonwebtoken");
 const path = require("path");
 const cors = require("cors");
 const multer = require("multer");
-const { type } = require("os");
-const { error } = require("console");
-const stripe = require('stripe')('your_stripe_secret_key');
-const nodemailer = require('nodemailer');
 const { body, validationResult } = require('express-validator');
 
 app.use(express.json());
@@ -368,7 +363,7 @@ const User = mongoose.model('User', {
 
     
 
-    const { body, validationResult } = require('express-validator');
+   
 
 // Place order endpoint
 app.post('/placeorder', fetchUser, [
@@ -417,11 +412,11 @@ app.post('/placeorder', fetchUser, [
 
 module.exports = app;
 
-        //  app.listen(port,(error)=> {
-        //     if(!error) {
-        //         console.log("Server is running on Port" +port)
-        //     }
-        //     else {
-        //         console.log("Error : " +error)
-        //     }
-        // })
+         app.listen(port,(error)=> {
+            if(!error) {
+                console.log("Server is running on Port" +port)
+            }
+            else {
+                console.log("Error : " +error)
+            }
+        })
