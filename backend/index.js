@@ -53,7 +53,9 @@ const upload = multer({storage:storage});
 
 
 // Creating upload endppoint for images
-app.use('/images', express.static('upload/images'))
+// app.use('/images', express.static('upload/images'))
+// Serve static images
+app.use('/images', express.static(path.join(__dirname, 'upload/images')));
 app.post("/upload", upload.single('product'), (req, res) => {
     res.json({
         success: 1,
