@@ -57,7 +57,7 @@ const CartDrawer = ({isOpen, onClose}) => {
                             <img src={e.image} alt="productimg" height={43} width={43} className="rounded-lg ring-1 ring-slate-900/5 my-1" />
                             </div>
                             <div className="px-2">
-                                <div className="">{cartItems[e.id]} x {e.new_price}</div>
+                                <div className="">{cartItems[e.id]} x ${e.new_price}</div>
                                 <div className="">{e.name}</div>
                             </div>
                             </div>
