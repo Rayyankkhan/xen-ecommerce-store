@@ -24,12 +24,22 @@ app.get('/', (req, res) => {
 
 
 // images storage endpoint
+// const storage = multer.diskStorage({
+//     destination: '/tmp/upload/images',
+//     filename:(req, file, cb) => {
+//         return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
+//     }
+// })
+
+// Images storage endpoint
 const storage = multer.diskStorage({
-    destination: '/tmp/upload/images',
-    filename:(req, file, cb) => {
-        return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
+    destination: (req, file, cb) => {
+        cb(null, 'upload/images');
+    },
+    filename: (req, file, cb) => {
+        cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
     }
-})
+});
 
 
 // const storage = multer.diskStorage({
