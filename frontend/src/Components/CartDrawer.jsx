@@ -78,7 +78,7 @@ const CartDrawer = ({isOpen, onClose}) => {
             </button>
             </Link>
             <Link onClick={window.scrollTo(0, 0)} to={'/checkout'}>
-            <button className='btn-dark rounded-lg !px-40'>
+            <button className='btn-dark-outline rounded-lg !px-40'>
               Checkout
             </button>
             </Link>
