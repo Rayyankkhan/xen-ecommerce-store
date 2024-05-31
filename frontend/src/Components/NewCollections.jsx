@@ -19,7 +19,7 @@ const NewCollections = () => {
 
                 {/* container  */}
 
-                <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 mt-16">
+                <div className="grid grid-cols-1 xs:grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mt-16">
                     {LATEST.map((item) => (
                         <Item key={item.id} id={item.id} name={item.name} image={item.image} old_price={item.old_price} new_price={item.new_price}/>
                     ))}

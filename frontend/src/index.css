@@ -72,7 +72,7 @@
   }
 
   .btn-dark { 
-    @apply  ring-1 ring-tertiary medium-15 bg-tertiary px-7 py-[10px] text-white transition-all hover:bg-tertiary/90
+    @apply  ring-1 ring-tertiary medium-15 bg-tertiary sm:px-7  py-[10px] text-white transition-all hover:bg-tertiary/90
   }
 
   .btn-dark-outline { 

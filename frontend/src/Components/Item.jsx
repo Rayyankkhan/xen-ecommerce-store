@@ -42,7 +42,7 @@ const Item = ({id, name, image, old_price, new_price, }) => {
                     
                 </div>
                 <div className="flexBetween py-2">
-                <button onClick={onAddToCart}  className="btn-dark-outline !py-2 rounded-md">Add to cart</button>
+                <button onClick={onAddToCart}  className="btn-dark-outline !py-2 xs:px-4 rounded-md">Add to cart</button>
                 <Link onClick={window.scrollTo(0, 0)} to={`/product/${id}`} className="group" >
                         <FaArrowRightLong className="bg-secondary text-white rounded-full h-10 w-10 p-3 group-hover:-rotate-45 transition-all duration-500"/>
                     </Link>

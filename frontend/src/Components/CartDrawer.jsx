@@ -41,14 +41,6 @@ const CartDrawer = ({isOpen, onClose}) => {
           <DrawerBody>
           {all_products.map((e)=> {
                     if(cartItems[e.id] > 0 ) {
-                    //   return <tr key={e.id} className="border-b border-slate-900/20 text-gray-30 p-6 medium-14 text-center">
-                    //     <td className="flexCenter"><img src={e.image} alt="productimg" height={43} width={43} className="rounded-lg ring-1 ring-slate-900/5 my-1" /></td>
-                    //     <td ><div className="line-clamp-3">{e.name}</div></td>
-                    //     <td className="">${e.new_price}</td>
-                    //     <td className="h-16 w-16 bg-white">{cartItems[e.id]}</td>
-                    //     <td className="">${e.new_price * cartItems[e.id]}</td>
-                    //     <td className=""><div className="bold-22 relative left-1/2 cursor-pointer  "><TbTrash onClick={() => removeFromCart(e.id)}/></div></td>
-                    //   </tr>
                     return <div key={e.id} className='border-b border-slate-900/20 text-gray-30 medium-14 my-2 py-2 overflow-y-auto max-h-[80vh] '>
                         <div className="flex items-center justify-between">
                             <div className="flex items-center gap-x-3">
@@ -71,14 +63,20 @@ const CartDrawer = ({isOpen, onClose}) => {
                   })}
           </DrawerBody>
 
-          <DrawerFooter className='flex flex-col gap-y-3'>
+          <DrawerFooter className='flex flex-col gap-y-2'>
+         
+            <div className="flexBetween py-4 gap-x-10 ">
+                    <h4 className="medium-16">Subtotal:</h4>
+                    <h4 className="text-gray-30 font-semibold">${getTotalCartAmount()}</h4>
+                  </div>
+          
             <Link onClick={window.scrollTo(0, 0)} to={'/cart-page'}>
-            <button  className='btn-dark rounded-lg !px-40'>
+            <button  className='btn-dark rounded-lg md:!px-40 xs:!px-20'>
               View Cart
             </button>
             </Link>
             <Link onClick={window.scrollTo(0, 0)} to={'/checkout'}>
-            <button className='btn-dark-outline rounded-lg !px-40'>
+            <button className='btn-dark-outline rounded-lg md:!px-40 xs:!px-20 '>
               Checkout
             </button>
             </Link>
