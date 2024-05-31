@@ -24,22 +24,22 @@ app.get('/', (req, res) => {
 
 
 // images storage endpoint
-// const storage = multer.diskStorage({
-//     destination: '/tmp/upload/images',
-//     filename:(req, file, cb) => {
-//         return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
-//     }
-// })
+const storage = multer.diskStorage({
+    destination: '/tmp/upload/images',
+    filename:(req, file, cb) => {
+        return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
+    }
+})
 
 // Images storage endpoint
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'upload/images');
-    },
-    filename: (req, file, cb) => {
-        cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
-    }
-});
+// const storage = multer.diskStorage({
+//     destination: (req, file, cb) => {
+//         cb(null, 'upload/images');
+//     },
+//     filename: (req, file, cb) => {
+//         cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
+//     }
+// });
 
 
 // const storage = multer.diskStorage({
@@ -53,9 +53,9 @@ const upload = multer({storage:storage});
 
 
 // Creating upload endppoint for images
-// app.use('/images', express.static('upload/images'))
+app.use('/images', express.static('upload/images'))
 // Serve static images
-app.use('/images', express.static(path.join(__dirname, 'upload/images')));
+// app.use('/images', express.static(path.join(__dirname, 'upload/images')));
 app.post("/upload", upload.single('product'), (req, res) => {
     res.json({
         success: 1,
