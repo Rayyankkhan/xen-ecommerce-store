@@ -9,7 +9,7 @@ const TopRated = () => {
   return (
     <>
       <section className="max-padd-container py-14 xl:py-24">
-        <div className="grid gap-8 grid-cols-1 xs:grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-8 grid-cols-1 xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           <div className="ring-1 ring-slate-900/5 rounded-3xl overflow-hidden shadow-sm">
             <div className="">
               <img src={ctBanner} alt="" />

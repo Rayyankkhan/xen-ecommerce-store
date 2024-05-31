@@ -13,7 +13,7 @@ const Hero = () => {
               <span className="text-secondary ">Products Seamless</span>{" "}
               Shopping
             </h2>
-            <p className="text-gray-50 regular-16 my-10 max-w-[33 rem] ">
+            <p className="text-gray-50 regular-16 my-10 max-w-[33rem] ">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
               nam laudantium voluptatem minus placeat non culpa illo ab, facere
               molestias consectetur a optio sapiente architecto debitis
