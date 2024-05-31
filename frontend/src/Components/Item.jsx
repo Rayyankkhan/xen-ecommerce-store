@@ -30,7 +30,7 @@ const Item = ({id, name, image, old_price, new_price, }) => {
             <img src={image} alt="productImage" className="w-full block object-cover translate-all duration-1000" />
             </div>
             <div className="px-5 pt-3">
-                <h4 className="medium-18 line-clamp-2 h-[3.25rem]">{name}</h4>
+                <h4 className="medium-18 line-clamp-2 h-[3.5rem]">{name}</h4>
                 <p className="my-2 line-clamp-2">
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta obcaecati odit ratione,
                 </p>
