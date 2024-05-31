@@ -28,7 +28,7 @@ const Header = () => {
   return (
     <>
       <header className="max-padd-container w-full z-50">
-        <div className="flexBetween py-3">
+        <div className="flexBetween  py-3">
           {/* Navbar Desktop */}
           <div className=" hidden xl:flex flex-1 z-50">
                 <NavBar containerStyles={"hidden xl:flex gap-x-5 xl:gap-x-10 medium-15 ring-1 ring-slate-900/10 rounded-full px-2 py-1"} />
@@ -65,15 +65,17 @@ const Header = () => {
                <FaOpencart className="p-2 h-10 w-10 ring-1 ring-slate-900/10 rounded-full hover:text-secondary"/>
                <span className="relative flexCenter w-5 h-5 rounded-full bg-secondary text-primary medium-14 -top-2">{getTotalCartItems()}</span>
              </NavLink>
-             {localStorage.getItem('auth-token') ? <NavLink onClick={() => {localStorage.removeItem('auth-token'); window.location.replace('/')}} to={"login"} className={"btn-secondary flexCenter gap-x-2 medium-16 rounded-full"}>
+             {localStorage.getItem('auth-token') ? <NavLink onClick={() => {localStorage.removeItem('auth-token'); window.location.replace('/')}} to={"login"} className={"btn-secondary xs:!px-2  sm:!px-7 flexCenter gap-x-2 medium-16 rounded-full"}>
 
               <img src={logout} alt="logouticon" height={19} width={19} />
-                Logout
+                <span className="xs:hidden sm:flex">Logout</span>
              </NavLink> :
-             <NavLink to={"login"} className={"btn-secondary flexCenter gap-x-2 medium-16 rounded-full"}>
+             <NavLink to={"login"} className={"btn-secondary xs:!px-3 sm:!px-7  flexCenter gap-x-2 medium-16 rounded-full"}>
 
               <img src={user} alt="logouticon" height={19} width={19} />
+                <span className="xs:hidden sm:flex">
                 Login
+                </span>
              </NavLink>}
            </div>
           </div>

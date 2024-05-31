@@ -6,20 +6,20 @@ const Hero = () => {
   return (
     <>
       <section className="max-padd-container mx-5">
-        <div className="max-padd-container bg-hero bg-center bg-no-repeat bgcover h-screen w-full rounded-3xl">
-          <div className="relative top-32 xs:top-52">
-            <h2 className="h2 capitalize max-w-[40rem]">
+        <div className="max-padd-container bg-hero bg-center bg-no-repeat bg-cover h-screen  w-full rounded-3xl">
+          <div className="relative top-32 sm:top-52 xs:top-20">
+            <h2 className="h2 capitalize max-w-[40rem] ">
               Discover Qality{" "}
               <span className="text-secondary ">Products Seamless</span>{" "}
               Shopping
             </h2>
-            <p className="text-gray-50 regular-16 my-10 max-w-[33rem]">
+            <p className="text-gray-50 regular-16 my-10 max-w-[33 rem] ">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
               nam laudantium voluptatem minus placeat non culpa illo ab, facere
               molestias consectetur a optio sapiente architecto debitis
               provident sequi corporis
             </p>
-            <div className="max-xs:flex-col flex gap-5">
+            <div className="xs:flex-col sm:flex-row flex gap-5">
               <Link to={"/"} className="btn-dark rounded-full flexCenter">
                 Shop now
               </Link>

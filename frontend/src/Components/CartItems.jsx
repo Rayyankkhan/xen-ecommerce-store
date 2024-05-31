@@ -15,7 +15,7 @@ const CartItems = () => {
         <div className="pt-24 bg-primary rounded-3xl">
             <table className="w-full mx-auto">
                 <thead className="">
-                    <tr className="bg-tertiary/90 text-white regular-16 sm:regular-18 text-start py-12">
+                    <tr className="bg-tertiary/90 text-white regular-16 xs:text-[11px] sm:regular-18 text-start py-12">
                         <th className="p-1 py-2">Products</th>
                         <th className="p-1 py-2">title</th>
                         <th className="p-1 py-2">Price</th>
@@ -68,9 +68,9 @@ const CartItems = () => {
               </div>
               <div className="flex flex-col gap-10 ">
                 <h4 className="bold-20 capitalize">Your coupon code enter here:</h4>
-                <div className="flexBetween pl-5 h-12 bg-white rounded-full ring-1 ring-slate-900/10 w-full max-w-[366px]">
-                  <input type="text" placeholder="Coupon code" className="bg-transparent border-none outline-none" />
-                  <button className="btn-dark rounded-full relative right-1">Submit</button>
+                <div className="flexBetween  pl-5 h-12 bg-white rounded-full ring-1 ring-slate-900/10 w-full max-w-[366px]">
+                  <input type="text" placeholder="Coupon code" className="bg-transparent border-none outline-none xs:text-[12px] " />
+                  <button className="btn-dark rounded-full relative sm:!left-0 xs:!-left-16 right-1 xs:text-[13px]">Submit</button>
                   </div>
               </div>
 

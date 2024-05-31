@@ -1,15 +1,26 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 
+import React from "react";
+
 import { useContext } from "react";
 import { ShopContext } from "../Context/ShopContext";
 import { Link } from "react-router-dom";
 import Item from "../Components/Item";
 import { VscSettings } from 'react-icons/vsc'
+import Product from "./Product";
+import { useParams } from "react-router-dom"
+import { useDisclosure } from "@chakra-ui/react";
+import CartDrawer from "../Components/CartDrawer";
 
 // eslint-disable-next-line no-unused-vars
 const Category = ({ category, banner }) => {
-  const { all_products } = useContext(ShopContext);
+  const { all_products} = useContext(ShopContext);
+ 
+  // const { isOpen, onOpen, onClose } = useDisclosure()
+  // const btnRef = React.useRef()
+
+  
   return (
     <>
       <section className="max-padd-container">
@@ -27,9 +38,9 @@ const Category = ({ category, banner }) => {
             {/* Container  */}
             <div className="max-padd-container bg-primary rounded-3xl py-8">
               <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
-                {all_products.map((item) => {
+                {all_products?.map((item) => {
                   if(category === item.category) {
-                    return (<Item key={item.id} id={item.id} name={item.name} image={item.image} old_price={item.old_price} new_price={item.new_price}/>)
+                    return (<Item key={item.id} id={item.id} name={item.name} image={item.image} old_price={item.old_price} new_price={item.new_price}  />)
                   }
                 })}
               </div>
@@ -41,6 +52,7 @@ const Category = ({ category, banner }) => {
             </div>
         </div>
       </section>
+      {/* <CartDrawer isOpen={isOpen} onClose={onClose} btnRef={btnRef} /> */}
     </>
   );
 };
