@@ -1,10 +1,20 @@
-const port = process.env.PORT || 4000;
+const dotenv = require('dotenv');
+dotenv.config({ path: '.env.local' });
+
+
 const express = require("express");
 const app = express();
 
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const path = require("path");
+
+
+
+const port = process.env.PORT || 4000;
+const BASE_URL = process.env.BASE_URL || `http://localhost:${port}`;
+
+
 const cors = require("cors");
 const multer = require("multer");
 const { body, validationResult } = require('express-validator');
@@ -25,7 +35,7 @@ app.get('/', (req, res) => {
 
 // images storage endpoint
 const storage = multer.diskStorage({
-    destination: '/tmp/upload/images',
+    destination: './upload/images',
     filename:(req, file, cb) => {
         return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
     }
@@ -49,19 +59,28 @@ const storage = multer.diskStorage({
 //     }
 // })
 
-const upload = multer({storage:storage});
+const upload = multer({ storage:storage });
 
 
 // Creating upload endppoint for images
-app.use('/images', express.static('upload/images'))
+// app.use('/images', express.static('upload/images'))
 // Serve static images
-// app.use('/images', express.static(path.join(__dirname, 'upload/images')));
+app.use('/images', express.static(path.join(__dirname, 'upload/images')));
+
+
+// app.post("/upload", upload.single('product'), (req, res) => {
+//     res.json({
+//         success: 1,
+//         image_url: `${BASE_URL}/images/${req.file.filename}`
+//     })
+// })
+
 app.post("/upload", upload.single('product'), (req, res) => {
     res.json({
         success: 1,
-        image_url: `http://localhost:${port}/images/${req.file.filename}`
-    })
-})
+        image_url: `${BASE_URL}/images/${req.file.filename}`
+    });
+});
 
 const Product = mongoose.model("Product", {
     id:{
