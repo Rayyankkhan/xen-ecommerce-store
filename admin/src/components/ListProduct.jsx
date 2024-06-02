@@ -5,7 +5,7 @@ const ListProduct = () => {
   const [allProducts, setAllProducts] = useState([]);
 
   const fetchInfo = async () => {
-    await fetch('http://localhost:4000/allproducts').then((res)=> res.json()).then((data)=> {setAllProducts(data)});
+    await fetch('https://xen-ecommerce-store-backend.vercel.app/allproducts').then((res)=> res.json()).then((data)=> {setAllProducts(data)});
   }
 
   useEffect(()=>{
@@ -14,7 +14,7 @@ const ListProduct = () => {
 
 
   const remove_product = async (id) => {
-    await fetch("http://localhost:4000/removeproduct", {
+    await fetch("https://xen-ecommerce-store-backend.vercel.app/removeproduct", {
       method: 'POST',
       headers:{
         Accept: 'application/json',

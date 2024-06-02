@@ -32,7 +32,7 @@ let product = productDetails;
 let formData = new FormData();
 formData.append('product', image);
 
-await fetch('http://localhost:4000/upload', {
+await fetch('https://xen-ecommerce-store-backend.vercel.app/upload', {
   method: 'POST',
   headers:{
     Accept: 'application/json',
@@ -43,7 +43,7 @@ await fetch('http://localhost:4000/upload', {
 if(responseData.success){
   product.image = responseData.image_url;
   console.log(product);
-  await fetch('http://localhost:4000/addproduct', {
+  await fetch('https://xen-ecommerce-store-backend.vercel.app/addproduct', {
     method: 'POST',
     headers:{
       Accept: 'application/json',
