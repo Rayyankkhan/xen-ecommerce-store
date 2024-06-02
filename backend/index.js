@@ -78,7 +78,7 @@ app.use('/images', express.static(path.join(__dirname, 'upload/images')));
 app.post("/upload", upload.single('product'), (req, res) => {
     res.json({
         success: 1,
-        image_url: `${BASE_URL}/images/${req.file.filename}`
+        image_url: `https://xen-ecommerce-store-backend.vercel.app/images/${req.file.filename}`
     });
 });
 
