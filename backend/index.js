@@ -144,7 +144,7 @@ app.post('/addproduct' , async(req,res)=>{
     console.log("Saved");
     res.json({
         success: true,
-        name:req.body.name
+        name: req.body.name
     })
 })
 

@@ -22,43 +22,81 @@ const AddProduct = () => {
     setproductDetails({ ...productDetails, [e.target.name]: e.target.value });
   };
 
-  const Add_Product = async () => {
-    console.log(productDetails);
-    let responseData;
-    let product = productDetails;
+  // const Add_Product = async () => {
+  //   console.log(productDetails);
+  //   let responseData;
+  //   let product = productDetails;
 
+  //   let formData = new FormData();
+  //   formData.append("product", image);
+
+  //   await fetch("https://xen-ecommerce-store-backend.vercel.app/upload", {
+  //     method: "POST",
+  //     headers: {
+  //       Accept: "application/json",
+  //     },
+  //     body: formData,
+  //   })
+  //     .then((resp) => resp.json())
+  //     .then((data) => {
+  //       responseData = data;
+  //     });
+
+  //   if (responseData.success) {
+  //     product.image = responseData.image_url;
+  //     console.log(product);
+  //     await fetch("https://xen-ecommerce-store-backend.vercel.app/addproduct", {
+  //       method: "POST",
+  //       headers: {
+  //         Accept: "application/json",
+  //         "content-type": "application/json",
+  //       },
+  //       body: JSON.stringify(product),
+  //     })
+  //       .then((resp) => resp.json())
+  //       .then((data) => {
+  //         data.success ? alert("Product Added") : alert("upload Failed");
+  //       });
+  //   }
+  // };
+
+  const addProduct = async () => {
     let formData = new FormData();
     formData.append("product", image);
 
-    await fetch("https://xen-ecommerce-store-backend.vercel.app/upload", {
+    const uploadResponse = await fetch("https://xen-ecommerce-store-backend.vercel.app/upload", {
       method: "POST",
-      headers: {
-        Accept: "application/json",
-      },
       body: formData,
-    })
-      .then((resp) => resp.json())
-      .then((data) => {
-        responseData = data;
-      });
+    });
 
-    if (responseData.success) {
-      product.image = responseData.image_url;
-      console.log(product);
-      await fetch("https://xen-ecommerce-store-backend.vercel.app/addproduct", {
+    const uploadData = await uploadResponse.json();
+
+    if (uploadData.success) {
+      const product = {
+        ...productDetails,
+        image: uploadData.image_url,
+      };
+
+      const addProductResponse = await fetch("https://xen-ecommerce-store-backend.vercel.app/addproduct", {
         method: "POST",
         headers: {
-          Accept: "application/json",
-          "content-type": "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(product),
-      })
-        .then((resp) => resp.json())
-        .then((data) => {
-          data.success ? alert("Product Added") : alert("upload Failed");
-        });
+      });
+
+      const addProductData = await addProductResponse.json();
+
+      if (addProductData.success) {
+        alert("Product Added");
+      } else {
+        alert("Upload Failed");
+      }
     }
   };
+
+
+
 
   return (
     <>
@@ -129,7 +167,7 @@ const AddProduct = () => {
         </div>
 
         <button
-          onClick={() => Add_Product()}
+          onClick={() => addProduct()}
           className="btn-dark mt-4 flexCenter gap-x-1"
         >
           <MdAdd /> Add Product
