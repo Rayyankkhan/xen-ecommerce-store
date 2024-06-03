@@ -4,6 +4,8 @@ const multer = require("multer");
 const dotenv = require('dotenv');
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
+const cors = require("cors");
+const { body, validationResult } = require('express-validator');
 
 
 dotenv.config();
@@ -14,8 +16,6 @@ const port = process.env.PORT || 4000;
 const BASE_URL = process.env.BASE_URL || `http://localhost:${port}`;
 
 
-const cors = require("cors");
-const { body, validationResult } = require('express-validator');
 
 app.use(express.json());
 app.use(cors());
@@ -120,8 +120,6 @@ const Product = mongoose.model("Product", {
 
 
 // Api for add products
-
-
 app.post('/addproduct' , async(req,res)=>{
     let products = await Product.find({});
     let id;
@@ -129,11 +127,13 @@ app.post('/addproduct' , async(req,res)=>{
         let last_product_array = products.slice(-1);
         let last_product = last_product_array[0];
         id = last_product.id+1;
+    } else {
+        id = 1;
     }
     const product = new Product({
         id:id,
         name:req.body.name,
-        image:req.body.image,
+        image:`${BASE_URL}/images/${req.body.image.split('/').pop()}`,
         category:req.body.category,
         new_price:req.body.new_price,
         old_price:req.body.old_price,
@@ -149,6 +149,24 @@ app.post('/addproduct' , async(req,res)=>{
 })
 
 
+// creating API for get all products 
+// app.get('/allproducts' , async (req, res)=>{
+//     let products = await Product.find({})
+//     console.log("All Products Fetched")
+//     res.send(products);
+// })
+
+app.get('/allproducts', async (req, res) => {
+    let products = await Product.find({});
+    products = products.map(product => ({
+        ...product._doc,
+        image: product.image.replace('http://localhost:4000', BASE_URL) // Replace image URL dynamically
+    }));
+    res.send(products);
+});
+
+
+
 // creating API endpoint for deleteing products
 
 app.post('/removeproduct' , async(req, res)=>{
@@ -160,12 +178,7 @@ app.post('/removeproduct' , async(req, res)=>{
     })
 })
 
-// creating API for get all products 
-app.get('/allproducts' , async (req, res)=>{
-    let products = await Product.find({})
-    console.log("All Products Fetched")
-    res.send(products);
-})
+
 
 // Schema creating for user model
 const User = mongoose.model('User', {
